@@ -1,3 +1,7 @@
+// Copyright (c) 2024 DSR Corporation, Denver, Colorado.
+// https://www.dsr-corporation.com
+// SPDX-License-Identifier: Apache-2.0
+
 use chrono::Utc;
 use log_derive::{logfn, logfn_inputs};
 
@@ -250,12 +254,14 @@ mod ethr {
                 break;
             }
 
+            println!("{:?}", logs)
+
             // parse events
-            for log in logs {
-                let event = parse_did_event_response(client, &log)?;
-                previous_block = Some(event.previous_change());
-                history.push((log.block, event));
-            }
+            // for log in logs {
+            //     let event = parse_did_event_response(client, &log)?;
+            //     previous_block = Some(event.previous_change());
+            //     history.push((log.block, event));
+            // }
         }
         Ok(history)
     }
