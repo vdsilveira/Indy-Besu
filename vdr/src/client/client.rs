@@ -1,3 +1,7 @@
+// Copyright (c) 2024 DSR Corporation, Denver, Colorado.
+// https://www.dsr-corporation.com
+// SPDX-License-Identifier: Apache-2.0
+
 use std::{
     collections::HashMap,
     fmt::{Debug, Formatter},
@@ -363,6 +367,7 @@ pub mod test {
         pub account_control: TestContractConfig,
         pub upgrade_control: TestContractConfig,
         pub legacy_mapping_registry: TestContractConfig,
+        pub revocation_registry: TestContractConfig,
     }
 
     #[derive(Serialize, Deserialize)]
@@ -455,6 +460,13 @@ pub mod test {
                 address: CONFIG.contracts.validator_control.address.to_string(),
                 spec_path: Some(build_contract_path(
                     CONFIG.contracts.validator_control.spec_path.as_str(),
+                )),
+                spec: None,
+            },
+            ContractConfig {
+                address: CONFIG.contracts.revocation_registry.address.to_string(),
+                spec_path: Some(build_contract_path(
+                    CONFIG.contracts.revocation_registry.spec_path.as_str(),
                 )),
                 spec: None,
             },
